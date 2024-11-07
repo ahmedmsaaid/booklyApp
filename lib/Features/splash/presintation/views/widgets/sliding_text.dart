@@ -13,8 +13,7 @@ class slidingText extends StatelessWidget {
     return AnimatedBuilder(
       animation: slideAnimation,
       builder: (context, child) => SlideTransition(
-        child:
-            Text("Read Free Books".toUpperCase(), textAlign: TextAlign.center),
+        child: Text("Read Free Books", textAlign: TextAlign.center),
         position: slideAnimation,
       ),
     );
