@@ -1,4 +1,4 @@
-import 'package:bookly_app/Features/home/presintaion/views/widgets/title.dart';
+import 'package:bookly_app/Features/home/presintaion/views/home_screen/widgets/title.dart';
 import 'package:flutter/material.dart';
 
 import 'best_seller_list_view.dart';
@@ -20,11 +20,11 @@ class HomeViewBody extends StatelessWidget {
               children: [
                 CustomeAppBar(),
                 SizedBox(
-                  height: 25,
+                  height: 15,
                 ),
                 CostumeListView(),
                 SizedBox(
-                  height: 50,
+                  height: 20,
                 ),
                 TitleWidget(),
                 SizedBox(

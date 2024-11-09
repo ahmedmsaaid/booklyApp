@@ -1,6 +1,5 @@
+import 'package:bookly_app/core/utilis/styles.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../core/utilis/styles.dart';
 
 class TitleWidget extends StatelessWidget {
   const TitleWidget({super.key});

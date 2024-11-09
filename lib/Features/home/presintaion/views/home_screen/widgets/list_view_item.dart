@@ -1,6 +1,5 @@
+import 'package:bookly_app/core/utilis/assets.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../core/utilis/assets.dart';
 
 class ListViewItem extends StatelessWidget {
   const ListViewItem({super.key});

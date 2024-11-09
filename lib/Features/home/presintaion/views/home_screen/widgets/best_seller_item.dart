@@ -1,7 +1,6 @@
+import 'package:bookly_app/core/utilis/assets.dart';
 import 'package:bookly_app/core/utilis/styles.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../core/utilis/assets.dart';
 
 class BestSellerItem extends StatelessWidget {
   const BestSellerItem({super.key});
@@ -13,7 +12,7 @@ class BestSellerItem extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            height: 130,
+            height: 150,
             child: AspectRatio(
                 aspectRatio: 2.8 / 4,
                 child: Container(
