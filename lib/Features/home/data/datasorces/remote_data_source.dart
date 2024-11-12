@@ -1,28 +1,34 @@
 import 'package:bookly_app/Features/home/data/models/book_model/BookModel.dart';
 import 'package:bookly_app/Features/home/domain/entites/book_entity.dart';
+import 'package:bookly_app/constance.dart';
 import 'package:bookly_app/core/api/api_consumer.dart';
 import 'package:bookly_app/core/api/end_points.dart';
+import 'package:bookly_app/core/functions/save_books.dart';
 
-abstract class BaseRemoteDataSource {
+abstract class RemoteDataSource {
   Future<List<BookEntity>> fetchNewestBooks();
-  Future<List<BookEntity>> fetchFeaturedBooks();
+  Future<List<BookEntity>> fetchFreedBooks();
 }
 
-class RemoteDataSource extends BaseRemoteDataSource {
+class RemoteDataSourceImpl extends RemoteDataSource {
   final ApiConsumer apiConsumer;
 
-  RemoteDataSource({required this.apiConsumer});
+  RemoteDataSourceImpl({required this.apiConsumer});
+
   @override
   Future<List<BookEntity>> fetchNewestBooks() async {
     var response = await apiConsumer.get(path: EndPoints.newBooks);
-    return getBookList(response);
-    ;
+    List<BookEntity> books = getBookList(response);
+    saveBooksData(books, kNewBox);
+    return books;
   }
 
   @override
-  Future<List<BookEntity>> fetchFeaturedBooks() async {
+  Future<List<BookEntity>> fetchFreedBooks() async {
     var response = await apiConsumer.get(path: EndPoints.freeBooks);
-    return getBookList(response);
+    List<BookEntity> books = getBookList(response);
+    saveBooksData(books, kFreeBox);
+    return books;
   }
 
   List<BookEntity> getBookList(Map<String, dynamic> data) {
