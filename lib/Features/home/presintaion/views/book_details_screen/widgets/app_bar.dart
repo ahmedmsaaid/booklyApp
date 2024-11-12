@@ -2,8 +2,8 @@ import 'package:bookly_app/core/utilis/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CustomeAppBar extends StatelessWidget {
-  const CustomeAppBar({super.key});
+class DetailsAppBar extends StatelessWidget {
+  const DetailsAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,16 +12,20 @@ class CustomeAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SvgPicture.asset(
-            AssetsData.logo,
-            height: 25,
+          IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: SvgPicture.asset(
+              AssetsData.x,
+              height: 40,
+            ),
           ),
           IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.search,
-                size: 40,
-              ))
+            onPressed: () {},
+            icon: SvgPicture.asset(
+              AssetsData.cart,
+              height: 25,
+            ),
+          )
         ],
       ),
     );
