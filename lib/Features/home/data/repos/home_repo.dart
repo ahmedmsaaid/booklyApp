@@ -2,7 +2,7 @@ import 'package:bookly_app/Features/home/data/datasorces/local-data_source.dart'
 import 'package:bookly_app/Features/home/data/datasorces/remote_data_source.dart';
 import 'package:bookly_app/Features/home/domain/entites/book_entity.dart';
 import 'package:bookly_app/Features/home/domain/repos/home_repo.dart';
-import 'package:bookly_app/core/errors/error_handler.dart';
+import 'package:bookly_app/core/errors/exeption.dart';
 import 'package:dartz/dartz.dart';
 
 class HomeRepoImpl extends HomeRepo {
@@ -12,7 +12,7 @@ class HomeRepoImpl extends HomeRepo {
   HomeRepoImpl(
       {required this.homeRemoteDataSource, required this.homeLocalDataSource});
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchNewBooks() async {
+  Future<Either<String, List<BookEntity>>> fetchNewBooks() async {
     try {
       List<BookEntity> books;
       books = homeLocalDataSource.getNewBooks();
@@ -21,13 +21,13 @@ class HomeRepoImpl extends HomeRepo {
       }
       books = await homeRemoteDataSource.fetchNewestBooks();
       return right(books);
-    } on Exception catch (e) {
-      return left(Failure());
+    } on ServerErrors catch (e) {
+      return left(e.errorModel.msg);
     }
   }
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchNewsBooks() async {
+  Future<Either<String, List<BookEntity>>> fetchNewsBooks() async {
     try {
       List<BookEntity> books;
       books = homeLocalDataSource.getNewBooks();
@@ -36,8 +36,8 @@ class HomeRepoImpl extends HomeRepo {
       }
       books = await homeRemoteDataSource.fetchNewestBooks();
       return right(books);
-    } on Exception catch (e) {
-      return left(Failure());
+    } on ServerErrors catch (e) {
+      return left(e.errorModel.msg);
     }
   }
 }

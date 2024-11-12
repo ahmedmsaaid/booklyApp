@@ -8,7 +8,7 @@ final class NewBooksInitial extends NewBooksState {}
 final class LoadingNewBooks extends NewBooksState {}
 
 final class SuccessNewBooks extends NewBooksState {
-  final List<BookModel> books;
+  final List<BookEntity> books;
   SuccessNewBooks(this.books);
 }
 

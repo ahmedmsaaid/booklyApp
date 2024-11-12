@@ -1,8 +1,9 @@
+import 'package:bookly_app/core/errors/error_handler.dart';
 import 'package:dio/dio.dart';
 
 import 'error_model.dart';
 
-class ServerErrors implements Exception {
+class ServerErrors implements Exception, Failure {
   final ErrorModel errorModel;
 
   ServerErrors({required this.errorModel});
@@ -27,32 +28,25 @@ void handelDioExceptions(DioException e) {
     case DioExceptionType.badResponse:
       switch (e.response?.statusCode) {
         case 400:
-          throw ServerErrors(
-              errorModel: ErrorModel.fromJson(e.response!.data));
+          throw ServerErrors(errorModel: ErrorModel.fromJson(e.response!.data));
 
         case 401:
-          throw ServerErrors(
-              errorModel: ErrorModel.fromJson(e.response!.data));
+          throw ServerErrors(errorModel: ErrorModel.fromJson(e.response!.data));
 
         case 403:
-          throw ServerErrors(
-              errorModel: ErrorModel.fromJson(e.response!.data));
+          throw ServerErrors(errorModel: ErrorModel.fromJson(e.response!.data));
 
         case 404:
-          throw ServerErrors(
-              errorModel: ErrorModel.fromJson(e.response!.data));
+          throw ServerErrors(errorModel: ErrorModel.fromJson(e.response!.data));
 
         case 409:
-          throw ServerErrors(
-              errorModel: ErrorModel.fromJson(e.response!.data));
+          throw ServerErrors(errorModel: ErrorModel.fromJson(e.response!.data));
 
         case 422:
-          throw ServerErrors(
-              errorModel: ErrorModel.fromJson(e.response!.data));
+          throw ServerErrors(errorModel: ErrorModel.fromJson(e.response!.data));
 
         case 504:
-          throw ServerErrors(
-              errorModel: ErrorModel.fromJson(e.response!.data));
+          throw ServerErrors(errorModel: ErrorModel.fromJson(e.response!.data));
       }
   }
 }
